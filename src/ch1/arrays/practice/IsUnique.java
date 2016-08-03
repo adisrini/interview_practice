@@ -9,7 +9,7 @@ package ch1.arrays.practice;
  */
 public class IsUnique {
 
-    
+
     public boolean isUnique(String string) {
 
         // create a boolean array of 256 characters (as many as there are ASCII values)
@@ -51,15 +51,15 @@ public class IsUnique {
         // reach end of loop, and returns true
         //
         // This does exactly what we want
-        // 
+        //
         // NOTE: we can reduce unnecessary work by noting that any string longer than 256 will automatically have repetition,
         // and strings of size 0 and 1 will not have any repetition.
 
     }
-    
+
     public static void main(String args[]) {
         IsUnique iu = new IsUnique();
-        System.out.println(iu.isUnique("abalone"));
+        System.out.println(iu.isUnique("abalonian"));
         System.out.println(iu.isUnique("hello"));
         System.out.println(iu.isUnique("windmill"));
         System.out.println(iu.isUnique("typing"));
