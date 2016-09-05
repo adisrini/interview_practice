@@ -1,0 +1,94 @@
+package ch3.stacksqueues.practice;
+
+/**
+ * Imagine a (literal) stack of plates. If the stack gets too high, it might topple.
+ * Therefore, in real life, we would likely start a new stack when the previous stack exceeds some
+ * threshold. Implement a data structure SetOfStacks that mimics this. SetOfStacks should be
+ * composed of several stacks and should create a new stack once the previous one exceeds capacity.
+ * SetOfStacks.push() and SetOfStacks.pop() should behave identically to a single stack
+ * (that is, pop() should return the same values as it would if there were just a single stack). 
+ * 
+ * @author Aditya Srinivasan
+ *
+ */
+public class StackOfPlates {
+    
+    private Map<Integer, Stack<Integer>> set;
+    private int currentIndex;
+    private int capacity;
+    
+    public StackOfPlates(int capacity) {
+    	set = new HashMap<Integer, Stack<Integer>>();
+    	currentIndex = 0;
+    	set.put(currentIndex, new Stack<>());
+    	this.capacity = capacity;
+    }
+    
+    //
+    // We just imagine a normal stack split into several partitions. Then, we take each partition and bring them
+    // to the same level as the bottom level. We now have a horizontal array (or hashtable) of stacks.
+    //
+    // The behavior is also the same. We start filling the stack at index 1 of the table. Only when it is full, do
+    // we increment our counter to work at index 2. when index 2 is full, we move to index 3. This goes on for however
+    // many indices we need (potentially infinite).
+    //
+    // When removing from stacks, we remove from whatever index n we are at until it is depleted. When it has reached
+	// 0 items (when it is empty), we decrement our index and work at index (n - 1).
+	//
+	// Therefore, in our push and pop methods, we must check whether our current stack is full or empty, respectively,
+	// and adjust the index accordingly (increment or decrement).
+	//
+	// When we pop at an index, we merely pop from the stack at the index specified
+	//
+	// Pushing and popping are both O(1), since accessing a hashtable is O(1) as are normal push and pop algorithms
+	// The space complexity is O(S) where S is the number of stacks we will have. This is expected given our data structure
+	// must provide this functionality.
+	//
+	
+	public void push(int data) {
+		// finds the next available stack to push to
+		while(isFull(currentIndex)) {
+			currentIndex++;
+			createNewStackIfDoesntExist(currentIndex);
+		}
+		set.get(currentIndex).push(data);
+	}
+	
+	public int pop() {
+		// this needs to be checked because with the popAtIndex funtion,
+		// even if currentIndex is at i, we can deplete i - 1, i - 2, i - 3, ...
+		// all the way until 1
+		// so this gets us to the nearest non-empty stack
+		while(isEmpty(currentIndex)) {
+			currentIndex--;
+		}
+		if(currentIndex == -1) throw new EmptyStackException();
+		return set.get(currentIndex).push(data);
+	}
+	
+	public int popAtIndex(int index) {
+		if(!exists(index)) throw new NoSuchElementException();
+		if(isEmpty(index)) throw new EmptyStackException();
+		return set.get(index).pop();
+	}
+	
+	private boolean exists(int index) {
+		return set.containsKey(index);
+	}
+	
+	private boolean isFull(int index) {
+		return set.get(currentIndex).size >= capacity;
+	}
+	
+	private boolean isEmpty(int index) {
+		return set.get(currentIndex).size == 0;
+	}
+	
+	private boolean createNewStackIfDoesntExist(int index) {
+		if(!exists(index)) {
+			set.put(index, new Stack<>());
+		}
+	}
+	
+	
+}

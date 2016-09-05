@@ -1,0 +1,23 @@
+public char[] urlify(char[] string, int length) {
+	if(string.length == length) {
+		return string;
+	}
+	
+	int place = length - 1;
+	
+	for(int i = string.length - 1; i >= 0; i--) {
+		if(string[place] != ' ') {
+			// if a regular character, just move it up
+			string[i] = string[place];
+		} else {
+			// if a space, add '%20' and move i down two more
+			string[i] = '0';
+			string[i-1] = '2';
+			string[i-2] = '%';
+			i -= 3;
+		}
+		place--;
+	}
+	
+	return string;
+}
