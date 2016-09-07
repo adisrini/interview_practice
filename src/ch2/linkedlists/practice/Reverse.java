@@ -17,6 +17,19 @@ public class Reverse {
         return prev;
     }
     
+    public static Node reverseRecurse(Node node) {
+        if(node == null || node.next == null) {
+            return node;
+        }
+        Node next = node.next;      // store next node
+        node.next = null;           // break cycle
+        
+        Node rest = reverseRecurse(next);   // reverse the rest of the list
+        next.next = node;
+        
+        return rest;
+    }
+    
     public static void main(String[] args) {
         Node n1 = new Node(1);
         Node n2 = new Node(2);
@@ -34,7 +47,7 @@ public class Reverse {
         
         ll.print();
         
-        Node n = Reverse.reverse(n1);
+        Node n = Reverse.reverseRecurse(n1);
         while(n != null) {
             System.out.print(n.data + " -> ");
             n = n.next;
