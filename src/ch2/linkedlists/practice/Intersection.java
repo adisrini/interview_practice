@@ -95,7 +95,7 @@ public class Intersection {
     public static void main(String[] args) {
         
         Node a1 = new Node(2);
-        Node a2 = new Node(10);
+        Node a2 = new Node(9);
         Node b1 = new Node(3);
         Node b2 = new Node(4);
         Node b3 = new Node(10);
@@ -103,13 +103,15 @@ public class Intersection {
         LinkedList ll1 = new LinkedList();
         ll1.add(a1);
         ll1.add(a2);
+        ll1.add(b2);
+        ll1.add(b3);
         
         LinkedList ll2 = new LinkedList();
         ll2.add(b1);
         ll2.add(b2);
         ll2.add(b3);
         
-        System.out.println(Intersection.doIntersect(ll1.head, ll2.head));
+        System.out.println(Intersection.doIntersect(ll1.head, ll2.head).data);
         
     }
 
