@@ -1,8 +1,7 @@
 package ch4.treesandgraphs.practice;
 
-import ch2.linkedlists.implementations.LinkedList;
-import ch2.linkedlists.implementations.LinkedList.Node;
 import ch3.stacksqueues.implementations.Queue;
+import ch4.treesandgraphs.implementations.Graph;
 import ch4.treesandgraphs.implementations.Vertex;
 
 /**

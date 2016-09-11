@@ -9,6 +9,7 @@ package ch1.arrays.practice;
  */
 public class IsUnique {
 
+    
     public boolean isUnique(String string) {
 
         // create a boolean array of 256 characters (as many as there are ASCII values)
