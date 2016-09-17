@@ -1,6 +1,6 @@
 package ch4.treesandgraphs.practice;
 
-import ch4.treesandgraphs.implementations.BinaryTreeNode;
+import ch4.treesandgraphs.implementations.BNode;
 
 /**
  * 
@@ -21,13 +21,13 @@ public class CheckBalanced {
     // very end
     //
     
-    public static boolean isBalanced(BinaryTreeNode<Integer> root) {
+    public static boolean isBalanced(BNode<Integer> root) {
         if(root == null) return true;
         if(!balanced(root)) return false;
         return isBalanced(root.left) && isBalanced(root.right);
     }
     
-    public static boolean balanced(BinaryTreeNode<Integer> root) {
+    public static boolean balanced(BNode<Integer> root) {
         return (Math.abs(height(root.left) - height(root.right)) <= 1);
     }
     
@@ -45,18 +45,18 @@ public class CheckBalanced {
     //
     // so we return the max of each subtree height each call
     
-    public static int height(BinaryTreeNode<Integer> root) {
+    public static int height(BNode<Integer> root) {
         if(root == null) return -1;
         return 1 + Math.max(height(root.left), height(root.right));
     }
     
     
     public static void main(String[] args) {
-        BinaryTreeNode<Integer> root = new BinaryTreeNode<>(0);
-        BinaryTreeNode<Integer> n1 = new BinaryTreeNode<>(1);
-        BinaryTreeNode<Integer> n2 = new BinaryTreeNode<>(2);
-        BinaryTreeNode<Integer> n3 = new BinaryTreeNode<>(3);
-        BinaryTreeNode<Integer> n4 = new BinaryTreeNode<>(4);
+        BNode<Integer> root = new BNode<>(0);
+        BNode<Integer> n1 = new BNode<>(1);
+        BNode<Integer> n2 = new BNode<>(2);
+        BNode<Integer> n3 = new BNode<>(3);
+        BNode<Integer> n4 = new BNode<>(4);
         root.left = n1;
         root.right = n2;
         n2.right = n3;

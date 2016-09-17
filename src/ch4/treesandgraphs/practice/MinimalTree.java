@@ -1,6 +1,6 @@
 package ch4.treesandgraphs.practice;
 
-import ch4.treesandgraphs.implementations.BinaryTreeNode;
+import ch4.treesandgraphs.implementations.BNode;
 
 /**
  * Given a sorted (increasing order) array with unique integer elements, write an algorithm to create a binary 
@@ -31,17 +31,17 @@ public class MinimalTree {
     // So, what is our base case? Our base case is when we've visited every item in the array.
     //
     
-    public static BinaryTreeNode<Integer> create(int[] array) {
+    public static BNode<Integer> create(int[] array) {
         return createHelper(array, 0, array.length - 1);
     }
     
-    public static BinaryTreeNode<Integer> createHelper(int[] array, int start, int end) {
-        if(start == end) return new BinaryTreeNode<Integer>(array[start]);
+    public static BNode<Integer> createHelper(int[] array, int start, int end) {
+        if(start == end) return new BNode<Integer>(array[start]);
         if(start > end) return null;
         
         int middleIndex = (int) Math.ceil(end + start)/2;
         int middle = array[middleIndex];
-        BinaryTreeNode<Integer> root = new BinaryTreeNode<Integer>(middle);
+        BNode<Integer> root = new BNode<Integer>(middle);
         
         root.left = createHelper(array, start, middleIndex - 1);
         root.right = createHelper(array, middleIndex + 1, end);
@@ -100,7 +100,7 @@ public class MinimalTree {
     //
     //
     
-    private static void inorder(BinaryTreeNode<Integer> root) {
+    private static void inorder(BNode<Integer> root) {
         if(root != null) {
             inorder(root.left);
             System.out.println(root.data);
@@ -109,7 +109,7 @@ public class MinimalTree {
     }
     
     public static void main(String[] args) {
-        BinaryTreeNode<Integer> root = MinimalTree.create(new int[]{1, 2, 3, 4, 5, 6, 7});
+        BNode<Integer> root = MinimalTree.create(new int[]{1, 2, 3, 4, 5, 6, 7});
         MinimalTree.inorder(root);
     }
     

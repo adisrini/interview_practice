@@ -1,10 +1,10 @@
 package ch4.treesandgraphs.practice2;
 
-import ch4.treesandgraphs.implementations.BinaryTreeNode;
+import ch4.treesandgraphs.implementations.BNode;
 
 public class CheckBalanced {
     
-    public static boolean check(BinaryTreeNode<Integer> root) {
+    public static boolean check(BNode<Integer> root) {
         if(root == null) {
             return true;
         }
@@ -16,7 +16,7 @@ public class CheckBalanced {
         return check(root.left) && check(root.right);
     }
     
-    private static int height(BinaryTreeNode<Integer> node) {
+    private static int height(BNode<Integer> node) {
         if(node == null) {
             return 0;
         }
@@ -24,17 +24,17 @@ public class CheckBalanced {
     }
     
     public static void main(String[] args) {
-        BinaryTreeNode<Integer> n0 = new BinaryTreeNode<>(0);
-        BinaryTreeNode<Integer> n1 = new BinaryTreeNode<>(1);
-        BinaryTreeNode<Integer> n2 = new BinaryTreeNode<>(2);
-        BinaryTreeNode<Integer> n3 = new BinaryTreeNode<>(3);
-        BinaryTreeNode<Integer> n4 = new BinaryTreeNode<>(4);
-        BinaryTreeNode<Integer> n5 = new BinaryTreeNode<>(5);
-        BinaryTreeNode<Integer> n6 = new BinaryTreeNode<>(6);
-        BinaryTreeNode<Integer> n7 = new BinaryTreeNode<>(7);
-        BinaryTreeNode<Integer> n8 = new BinaryTreeNode<>(8);
-        BinaryTreeNode<Integer> n9 = new BinaryTreeNode<>(9);
-        BinaryTreeNode<Integer> n10 = new BinaryTreeNode<>(10);
+        BNode<Integer> n0 = new BNode<>(0);
+        BNode<Integer> n1 = new BNode<>(1);
+        BNode<Integer> n2 = new BNode<>(2);
+        BNode<Integer> n3 = new BNode<>(3);
+        BNode<Integer> n4 = new BNode<>(4);
+        BNode<Integer> n5 = new BNode<>(5);
+        BNode<Integer> n6 = new BNode<>(6);
+        BNode<Integer> n7 = new BNode<>(7);
+        BNode<Integer> n8 = new BNode<>(8);
+        BNode<Integer> n9 = new BNode<>(9);
+        BNode<Integer> n10 = new BNode<>(10);
 
         n0.left = n1;
         n0.right = n2;

@@ -1,14 +1,14 @@
 package ch4.treesandgraphs.practice2;
 
-import ch4.treesandgraphs.implementations.BinaryTreeNode;
+import ch4.treesandgraphs.implementations.BNode;
 
 public class BTisBST {
     
-    public static boolean isBST(BinaryTreeNode<Integer> root) {
+    public static boolean isBST(BNode<Integer> root) {
         return isBSTUtil(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
     
-    public static boolean isBSTUtil(BinaryTreeNode<Integer> root, int min, int max) {
+    public static boolean isBSTUtil(BNode<Integer> root, int min, int max) {
         if(root == null) {      // an empty tree is a BST
             return true;
         }
@@ -20,12 +20,12 @@ public class BTisBST {
     }
     
     public static void main(String[] args) {
-        BinaryTreeNode<Integer> n1 = new BinaryTreeNode<>(1);
-        BinaryTreeNode<Integer> n2 = new BinaryTreeNode<>(2);
-        BinaryTreeNode<Integer> n3 = new BinaryTreeNode<>(3);
-        BinaryTreeNode<Integer> n4 = new BinaryTreeNode<>(4);
-        BinaryTreeNode<Integer> n5 = new BinaryTreeNode<>(5);
-        BinaryTreeNode<Integer> n6 = new BinaryTreeNode<>(6);
+        BNode<Integer> n1 = new BNode<>(1);
+        BNode<Integer> n2 = new BNode<>(2);
+        BNode<Integer> n3 = new BNode<>(3);
+        BNode<Integer> n4 = new BNode<>(4);
+        BNode<Integer> n5 = new BNode<>(5);
+        BNode<Integer> n6 = new BNode<>(6);
         
         n4.left = n2;
         n2.left = n1;

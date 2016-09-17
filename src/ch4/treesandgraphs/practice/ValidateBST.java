@@ -1,6 +1,6 @@
 package ch4.treesandgraphs.practice;
 
-import ch4.treesandgraphs.implementations.BinaryTreeNode;
+import ch4.treesandgraphs.implementations.BNode;
 
 /**
  * Implement a function to check if a binary tree is a binary search tree.
@@ -27,7 +27,7 @@ public class ValidateBST {
     
     private static int prev = Integer.MIN_VALUE;
     
-    public static boolean isBST(BinaryTreeNode<Integer> root) {
+    public static boolean isBST(BNode<Integer> root) {
         if(root == null) return true;
         
         if(!isBST(root.left)) return false;
@@ -43,12 +43,12 @@ public class ValidateBST {
     }
     
     public static void main(String[] args) {
-        BinaryTreeNode<Integer> n0 = new BinaryTreeNode<>(0);
-        BinaryTreeNode<Integer> n1 = new BinaryTreeNode<>(1);
-        BinaryTreeNode<Integer> n2 = new BinaryTreeNode<>(2);
-        BinaryTreeNode<Integer> n3 = new BinaryTreeNode<>(3);
-        BinaryTreeNode<Integer> n4 = new BinaryTreeNode<>(4);
-        BinaryTreeNode<Integer> n5 = new BinaryTreeNode<>(5);
+        BNode<Integer> n0 = new BNode<>(0);
+        BNode<Integer> n1 = new BNode<>(1);
+        BNode<Integer> n2 = new BNode<>(2);
+        BNode<Integer> n3 = new BNode<>(3);
+        BNode<Integer> n4 = new BNode<>(4);
+        BNode<Integer> n5 = new BNode<>(5);
         n3.left = n1;
         n1.left = n0;
         n1.right = n2;

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-import ch4.treesandgraphs.implementations.BinaryTreeNode;
+import ch4.treesandgraphs.implementations.BNode;
 
 /**
  * Given a binary tree, design an algorithm which creates a linked list of all the nodes at each depth (e.g.,
@@ -36,13 +36,13 @@ public class ListOfDepths {
     // the number of passes we need to make.
     //
     
-    public static Map<Integer, LinkedList<BinaryTreeNode<Integer>>> list(BinaryTreeNode<Integer> root) {
-        Map<Integer, LinkedList<BinaryTreeNode<Integer>>> map = new HashMap<Integer, LinkedList<BinaryTreeNode<Integer>>>();
+    public static Map<Integer, LinkedList<BNode<Integer>>> list(BNode<Integer> root) {
+        Map<Integer, LinkedList<BNode<Integer>>> map = new HashMap<Integer, LinkedList<BNode<Integer>>>();
         listHelper(root, 1, map);
         return map;
     }
     
-    public static void listHelper(BinaryTreeNode<Integer> root, int depth, Map<Integer, LinkedList<BinaryTreeNode<Integer>>> map) {
+    public static void listHelper(BNode<Integer> root, int depth, Map<Integer, LinkedList<BNode<Integer>>> map) {
         if(root != null) {
             visit(root, depth, map);
             depth++;
@@ -52,8 +52,8 @@ public class ListOfDepths {
         }
     }
     
-    private static void visit(BinaryTreeNode<Integer> root, int depth, Map<Integer, LinkedList<BinaryTreeNode<Integer>>> map) {
-        LinkedList<BinaryTreeNode<Integer>> list = (map.containsKey(depth)) ? map.get(depth) : new LinkedList<BinaryTreeNode<Integer>>();
+    private static void visit(BNode<Integer> root, int depth, Map<Integer, LinkedList<BNode<Integer>>> map) {
+        LinkedList<BNode<Integer>> list = (map.containsKey(depth)) ? map.get(depth) : new LinkedList<BNode<Integer>>();
         list.add(root);
         map.put(depth, list);
     }
@@ -103,14 +103,14 @@ public class ListOfDepths {
     // the map contains what we want
     
     public static void main(String[] args) {
-        BinaryTreeNode<Integer> root = new BinaryTreeNode<>(0);
-        BinaryTreeNode<Integer> n1 = new BinaryTreeNode<>(1);
-        BinaryTreeNode<Integer> n2 = new BinaryTreeNode<>(2);
-        BinaryTreeNode<Integer> n3 = new BinaryTreeNode<>(3);
+        BNode<Integer> root = new BNode<>(0);
+        BNode<Integer> n1 = new BNode<>(1);
+        BNode<Integer> n2 = new BNode<>(2);
+        BNode<Integer> n3 = new BNode<>(3);
         root.left = n1;
         root.right = n2;
         n2.right = n3;
-        Map<Integer, LinkedList<BinaryTreeNode<Integer>>> map = ListOfDepths.list(root);
+        Map<Integer, LinkedList<BNode<Integer>>> map = ListOfDepths.list(root);
         System.out.println(map);
     }
 }

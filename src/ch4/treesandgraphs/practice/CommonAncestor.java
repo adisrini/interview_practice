@@ -1,6 +1,6 @@
 package ch4.treesandgraphs.practice;
 
-import ch4.treesandgraphs.implementations.BinaryTreeNode;
+import ch4.treesandgraphs.implementations.BNode;
 
 /**
  * Design an algorithm and write code to find the first common ancestor of two nodes in a binary tree. Avoid storing
@@ -25,7 +25,7 @@ public class CommonAncestor {
     //
     
     static class Difference {
-        BinaryTreeNode<Integer> furtherNode;
+        BNode<Integer> furtherNode;
         int difference;
     }
     
@@ -83,7 +83,7 @@ public class CommonAncestor {
     // find that the subtree that q belongs in is null, that means we are at q, so if either result is null
     // we can return the node we are currently at
     
-    public static BinaryTreeNode<Integer> ancestor2(BinaryTreeNode<Integer> root, BinaryTreeNode<Integer> p, BinaryTreeNode<Integer> q) {
+    public static BNode<Integer> ancestor2(BNode<Integer> root, BNode<Integer> p, BNode<Integer> q) {
         
         while(root != null) {
             if(root == p || root == q) {
@@ -106,7 +106,7 @@ public class CommonAncestor {
         
     }
     
-    public static Side findSide(BinaryTreeNode<Integer> root, BinaryTreeNode<Integer> child) {
+    public static Side findSide(BNode<Integer> root, BNode<Integer> child) {
         if(inSubtree(root.left, child)) return Side.LEFT;
         else if(inSubtree(root.right, child)) return Side.RIGHT;
         else return Side.NEITHER;
@@ -129,7 +129,7 @@ public class CommonAncestor {
     //      --> return inSubtree(null, 2) || inSubtree(null, 2) = false
     //              
     
-    public static boolean inSubtree(BinaryTreeNode<Integer> root, BinaryTreeNode<Integer> child) {
+    public static boolean inSubtree(BNode<Integer> root, BNode<Integer> child) {
         if(root != null) {
             if(root == child) return true;
             return inSubtree(root.left, child) || inSubtree(root.right, child);
@@ -142,16 +142,16 @@ public class CommonAncestor {
     }
     
     public static void main(String[] args) {
-        BinaryTreeNode<Integer> n1 = new BinaryTreeNode<Integer>(1);
-        BinaryTreeNode<Integer> n2 = new BinaryTreeNode<Integer>(2);
-        BinaryTreeNode<Integer> n3 = new BinaryTreeNode<Integer>(3);
-        BinaryTreeNode<Integer> n4 = new BinaryTreeNode<Integer>(4);
-        BinaryTreeNode<Integer> n5 = new BinaryTreeNode<Integer>(5);
-        BinaryTreeNode<Integer> n6 = new BinaryTreeNode<Integer>(6);
-        BinaryTreeNode<Integer> n7 = new BinaryTreeNode<Integer>(7);
-        BinaryTreeNode<Integer> n10 = new BinaryTreeNode<Integer>(10);
-        BinaryTreeNode<Integer> n15 = new BinaryTreeNode<Integer>(15);
-        BinaryTreeNode<Integer> n17 = new BinaryTreeNode<Integer>(17);
+        BNode<Integer> n1 = new BNode<Integer>(1);
+        BNode<Integer> n2 = new BNode<Integer>(2);
+        BNode<Integer> n3 = new BNode<Integer>(3);
+        BNode<Integer> n4 = new BNode<Integer>(4);
+        BNode<Integer> n5 = new BNode<Integer>(5);
+        BNode<Integer> n6 = new BNode<Integer>(6);
+        BNode<Integer> n7 = new BNode<Integer>(7);
+        BNode<Integer> n10 = new BNode<Integer>(10);
+        BNode<Integer> n15 = new BNode<Integer>(15);
+        BNode<Integer> n17 = new BNode<Integer>(17);
         
         n6.left = n4;
         n4.left = n15;

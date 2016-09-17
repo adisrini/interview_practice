@@ -2,13 +2,13 @@ package ch4.treesandgraphs.implementations;
 
 public class BinaryTree<T> {
     
-    public BinaryTreeNode<T> root;
+    public BNode<T> root;
     
-    public void addLeft(BinaryTreeNode<T> parent, BinaryTreeNode<T> child) {
+    public void addLeft(BNode<T> parent, BNode<T> child) {
         parent.left = child;
     }
     
-    public void inorder(BinaryTreeNode<T> root) {
+    public void inorder(BNode<T> root) {
         if(root != null) {
             inorder(root.left);
             visit(root);
@@ -16,7 +16,7 @@ public class BinaryTree<T> {
         }
     }
     
-    public void preorder(BinaryTreeNode<T> root) {
+    public void preorder(BNode<T> root) {
         if(root != null) {
             visit(root);
             preorder(root.left);
@@ -24,7 +24,7 @@ public class BinaryTree<T> {
         }
     }
     
-    public void postorder(BinaryTreeNode<T> root) {
+    public void postorder(BNode<T> root) {
         if(root != null) {
             postorder(root.left);
             postorder(root.right);
@@ -32,7 +32,7 @@ public class BinaryTree<T> {
         }
     }
     
-    private void visit(BinaryTreeNode<T> node) {
+    private void visit(BNode<T> node) {
         System.out.println(node.data);
     }
     

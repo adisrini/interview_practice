@@ -1,12 +1,12 @@
 package ch4.treesandgraphs.implementations;
 
-public class BinaryTreeNode<T> {
+public class BNode<T> {
 
     public T data;
-    public BinaryTreeNode<T> left;
-    public BinaryTreeNode<T> right;
+    public BNode<T> left;
+    public BNode<T> right;
     
-    public BinaryTreeNode(T data) {
+    public BNode(T data) {
         this.data = data;
     }
     

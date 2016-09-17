@@ -1,6 +1,6 @@
 package ch4.treesandgraphs.practice;
 
-import ch4.treesandgraphs.implementations.BinaryTreeNode;
+import ch4.treesandgraphs.implementations.BNode;
 
 /**
  * T1 and T2 are two very large binary trees, with T1 much bigger than T2. Create an algorithm to determine if T2 is a
@@ -30,9 +30,9 @@ public class CheckSubtree {
     //
     // This does not require any additional buffers.
     
-    private static BinaryTreeNode<Integer> matchingNodeInT1 = null;
+    private static BNode<Integer> matchingNodeInT1 = null;
     
-    public static boolean isSubtree(BinaryTreeNode<Integer> root1, BinaryTreeNode<Integer> root2) {
+    public static boolean isSubtree(BNode<Integer> root1, BNode<Integer> root2) {
         if(root1 == null || root2 == null) {
             if(root1 != null) return true;              // if T2 is null, but T1 isn't, it is technically a subtree so return true
             if(root2 != null) return false;             // if T1 is null, but T2 isn't, T2 can't be a subtree so return false
@@ -58,7 +58,7 @@ public class CheckSubtree {
     //              false
     // Returns false
     
-    public static boolean parallelTraverse(BinaryTreeNode<Integer> t1, BinaryTreeNode<Integer> t2) {
+    public static boolean parallelTraverse(BNode<Integer> t1, BNode<Integer> t2) {
         if(t1 == null && t2 == null) {              // both are null
             return true;
         } else if(t1 == null || t2 == null) {       // only one is null
@@ -69,7 +69,7 @@ public class CheckSubtree {
         }
     }
     
-    public static void match(BinaryTreeNode<Integer> root1, BinaryTreeNode<Integer> root2) {
+    public static void match(BNode<Integer> root1, BNode<Integer> root2) {
         if(root1 != null) {
             if(root1.data == root2.data) matchingNodeInT1 = root1;
             match(root1.left, root2);
@@ -79,20 +79,20 @@ public class CheckSubtree {
     
     public static void main(String[] args) {
         
-        BinaryTreeNode<Integer> t11 = new BinaryTreeNode<Integer>(1);
-        BinaryTreeNode<Integer> t12 = new BinaryTreeNode<Integer>(2);
-        BinaryTreeNode<Integer> t13 = new BinaryTreeNode<Integer>(3);
-        BinaryTreeNode<Integer> t14 = new BinaryTreeNode<Integer>(4);
-        BinaryTreeNode<Integer> t15 = new BinaryTreeNode<Integer>(5);
-        BinaryTreeNode<Integer> t16 = new BinaryTreeNode<Integer>(6);
-        BinaryTreeNode<Integer> t17 = new BinaryTreeNode<Integer>(7);
-        BinaryTreeNode<Integer> t18 = new BinaryTreeNode<Integer>(8);
-        BinaryTreeNode<Integer> t19 = new BinaryTreeNode<Integer>(9);
-        BinaryTreeNode<Integer> t110 = new BinaryTreeNode<Integer>(10);
-        BinaryTreeNode<Integer> t111 = new BinaryTreeNode<Integer>(11);
-        BinaryTreeNode<Integer> t26 = new BinaryTreeNode<Integer>(6);
-        BinaryTreeNode<Integer> t27 = new BinaryTreeNode<Integer>(7);
-        BinaryTreeNode<Integer> t28 = new BinaryTreeNode<Integer>(8);
+        BNode<Integer> t11 = new BNode<Integer>(1);
+        BNode<Integer> t12 = new BNode<Integer>(2);
+        BNode<Integer> t13 = new BNode<Integer>(3);
+        BNode<Integer> t14 = new BNode<Integer>(4);
+        BNode<Integer> t15 = new BNode<Integer>(5);
+        BNode<Integer> t16 = new BNode<Integer>(6);
+        BNode<Integer> t17 = new BNode<Integer>(7);
+        BNode<Integer> t18 = new BNode<Integer>(8);
+        BNode<Integer> t19 = new BNode<Integer>(9);
+        BNode<Integer> t110 = new BNode<Integer>(10);
+        BNode<Integer> t111 = new BNode<Integer>(11);
+        BNode<Integer> t26 = new BNode<Integer>(6);
+        BNode<Integer> t27 = new BNode<Integer>(7);
+        BNode<Integer> t28 = new BNode<Integer>(8);
         
         t11.left = t12;
         t12.left = t14;

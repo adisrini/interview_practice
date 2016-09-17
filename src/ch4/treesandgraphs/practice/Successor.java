@@ -1,6 +1,6 @@
 package ch4.treesandgraphs.practice;
 
-import ch4.treesandgraphs.implementations.BinaryTreeNode;
+import ch4.treesandgraphs.implementations.BNode;
 
 /**
  * Write an algorithm to find the "next" node (i.e., in-order successor) of a given node in a
@@ -22,14 +22,14 @@ public class Successor {
     // if we are at a node with a right child, the right child will be its successor
     // 
     
-    public static BinaryTreeNode<Integer> successor(BinaryTreeNode<Integer> node) {
+    public static BNode<Integer> successor(BNode<Integer> node) {
         if(node == null) return null;
         
         if(node.right != null) {
             return leftMostNode(node.right);
         } else {
-            BinaryTreeNode<Integer> q = node;
-            BinaryTreeNode<Integer> x = null; //q.parent;
+            BNode<Integer> q = node;
+            BNode<Integer> x = null; //q.parent;
             
             while(x != null && x.left != q) {
                 q = x;
@@ -41,7 +41,7 @@ public class Successor {
     
     }
     
-    public static BinaryTreeNode<Integer> leftMostNode(BinaryTreeNode<Integer> node) {
+    public static BNode<Integer> leftMostNode(BNode<Integer> node) {
         if(node == null) return null;
         
         while(node.left != null) {

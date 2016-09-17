@@ -1,18 +1,18 @@
 package ch4.treesandgraphs.practice;
 
-import ch4.treesandgraphs.implementations.BinaryTreeNode;
+import ch4.treesandgraphs.implementations.BNode;
 
 public class PathsWithSum {
     
     private static int count = 0;
     
     /**
-     * Call {@link #countHelper(BinaryTreeNode, int)} for every node in the tree
+     * Call {@link #countHelper(BNode, int)} for every node in the tree
      * 
      * @param root
      * @param sum
      */
-    public static void count(BinaryTreeNode<Integer> root, int sum) {
+    public static void count(BNode<Integer> root, int sum) {
         if(root != null) {
             countHelper(root, 0, sum);
             count(root.left, sum);
@@ -26,7 +26,7 @@ public class PathsWithSum {
      * @param root
      * @param sum
      */
-    public static void countHelper(BinaryTreeNode<Integer> root, int running, int target) {
+    public static void countHelper(BNode<Integer> root, int running, int target) {
         if(root != null) {
             running += root.data;
             if(running == target) {
@@ -53,12 +53,12 @@ public class PathsWithSum {
     // 
     
     public static void main(String[] args) {
-        BinaryTreeNode<Integer> n4 = new BinaryTreeNode<Integer>(4);
-        BinaryTreeNode<Integer> n3 = new BinaryTreeNode<Integer>(3);
-        BinaryTreeNode<Integer> n2 = new BinaryTreeNode<Integer>(2);
-        BinaryTreeNode<Integer> n5 = new BinaryTreeNode<Integer>(5);
-        BinaryTreeNode<Integer> n6 = new BinaryTreeNode<Integer>(6);
-        BinaryTreeNode<Integer> n7 = new BinaryTreeNode<Integer>(7);
+        BNode<Integer> n4 = new BNode<Integer>(4);
+        BNode<Integer> n3 = new BNode<Integer>(3);
+        BNode<Integer> n2 = new BNode<Integer>(2);
+        BNode<Integer> n5 = new BNode<Integer>(5);
+        BNode<Integer> n6 = new BNode<Integer>(6);
+        BNode<Integer> n7 = new BNode<Integer>(7);
         
         n4.left = n5;
         n5.left = n3;

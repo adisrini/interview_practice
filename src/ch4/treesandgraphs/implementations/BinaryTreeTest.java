@@ -11,13 +11,13 @@ public class BinaryTreeTest {
     @Before
     public void setUp() {
         bt = new BinaryTree<>();
-        bt.root = new BinaryTreeNode<Integer>(4);
-        bt.root.left = new BinaryTreeNode<Integer>(2);
-        bt.root.right = new BinaryTreeNode<Integer>(6);
-        bt.root.left.left = new BinaryTreeNode<Integer>(1);
-        bt.root.left.right = new BinaryTreeNode<Integer>(3);
-        bt.root.right.left = new BinaryTreeNode<Integer>(5);
-        bt.root.right.right = new BinaryTreeNode<Integer>(7);
+        bt.root = new BNode<Integer>(4);
+        bt.root.left = new BNode<Integer>(2);
+        bt.root.right = new BNode<Integer>(6);
+        bt.root.left.left = new BNode<Integer>(1);
+        bt.root.left.right = new BNode<Integer>(3);
+        bt.root.right.left = new BNode<Integer>(5);
+        bt.root.right.right = new BNode<Integer>(7);
     }
     
     @After
