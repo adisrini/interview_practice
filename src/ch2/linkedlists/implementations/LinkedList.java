@@ -107,5 +107,17 @@ public class LinkedList {
         ll.delete(2);
             ll.print();
     }
+    
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder("[");
+        Node current = head;
+        while(current != null) {
+            builder.append(current.data + " -> ");
+            current = current.next;
+        }
+        builder.append("]");
+        return builder.toString();
+    }
 
 }
