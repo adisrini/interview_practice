@@ -2,6 +2,7 @@ package ch4.treesandgraphs.practice;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 import ch4.treesandgraphs.implementations.BNode;
 import ch4.treesandgraphs.implementations.Vertex;
@@ -13,6 +14,27 @@ public class Traversal {
             inorder(root.left);
             System.out.println(root.data);
             inorder(root.right);
+        }
+    }
+    
+    public static void inorderIterative(BNode<Integer> root) {
+        if(root == null) {
+            return;
+        }
+        
+        Stack<BNode<Integer>> stack = new Stack<>();
+        BNode<Integer> node = root;
+        
+        while(!stack.isEmpty() || node != null) {
+            if(node != null) {
+                stack.push(node);
+                node = node.left;
+            } else {
+                BNode<Integer> top = stack.pop();
+                System.out.println(top.data);
+                node = top.right;
+                
+            }
         }
     }
     
@@ -77,7 +99,8 @@ public class Traversal {
         n5.right = n6;
         
 //        inorder(n4);
-//        System.out.println();
+        inorderIterative(n4);
+        System.out.println();
 //        preorder(n4);
 //        System.out.println();
 //        postorder(n4);
