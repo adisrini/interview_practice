@@ -38,6 +38,29 @@ public class Traversal {
         }
     }
     
+    public static void preorderIterative(BNode<Integer> root) {
+        if(root == null) {
+            return;
+        }
+        
+        Stack<BNode<Integer>> stack = new Stack<>();
+        BNode<Integer> node = root;
+        
+        stack.push(node);
+        
+        while(!stack.isEmpty()) {
+            BNode<Integer> n = stack.pop();
+            System.out.println(n.data);
+            
+            if(n.right != null) {
+                stack.push(n.right);
+            }
+            if(n.left != null) {
+                stack.push(n.left);
+            }
+        }
+    }
+    
     public static void preorder(BNode<Integer> root) {
         if(root != null) {
             System.out.println(root.data);
@@ -99,10 +122,11 @@ public class Traversal {
         n5.right = n6;
         
 //        inorder(n4);
-        inorderIterative(n4);
-        System.out.println();
-//        preorder(n4);
+//        inorderIterative(n4);
 //        System.out.println();
+//        preorder(n4);
+        preorderIterative(n4);
+        System.out.println();
 //        postorder(n4);
 //        System.out.println();
         
