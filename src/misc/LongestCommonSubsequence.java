@@ -3,19 +3,24 @@ package misc;
 public class LongestCommonSubsequence {
     
     public static int LCS(String s1, String s2) {
-        int[][] LCS = new int[s1.length()][s2.length()];
-        return LCS(s1, s2, s1.length(), s2.length(), LCS);
-    }
-    
-    private static int LCS(String s1, String s2, int i, int j, int[][] LCS) {
-        if(i == 0 || j == 0) {
-            return 0;
+        int n = s1.length();
+        int m = s2.length();
+        int[][] LCS = new int[n + 1][m + 1];
+        
+        for(int i = 0; i <= n; i++) {
+            for(int j = 0; j <= m; j++) {
+                if(i == 0 || j == 0) {
+                    LCS[i][j] = 0;
+                }
+                else if(s1.charAt(i - 1) == s2.charAt(j - 1)) {
+                    LCS[i][j] = 1 + LCS[i - 1][j - 1];
+                } else {
+                    LCS[i][j] = Math.max(LCS[i - 1][j], LCS[i][j - 1]);
+                }
+            }
         }
-        if(s1.charAt(i - 1) == s2.charAt(j - 1)) {
-            return 1 + LCS(s1, s2, i - 1, j - 1, LCS);
-        } else {
-            return Math.max(LCS(s1, s2, i - 1, j, LCS), LCS(s1, s2, i, j - 1, LCS));
-        }
+        
+        return LCS[n][m];
     }
     
     public static void main(String[] args) {
