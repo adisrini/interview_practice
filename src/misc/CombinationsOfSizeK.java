@@ -32,7 +32,7 @@ public class CombinationsOfSizeK {
     }
     
     public static void main(String[] args) {
-        permute(new Character[]{'a', 'b', 'c', 'd', 'e', 'f'}, 5);
+        permute(new Character[]{'a', 'b', 'c'}, 2);
     }
 
 }
