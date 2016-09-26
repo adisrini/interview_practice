@@ -11,8 +11,13 @@ public class ReverseLL {
         Node next = head.next;
         head.next = null;
         Node rest = reverse(next);
+        Node curr = rest;
+        while(curr != null) {
+            System.out.print(curr.data);
+            curr = curr.next;
+        }
+        System.out.println();
         next.next = head;
-        
         return rest;
     }
     
@@ -37,10 +42,10 @@ public class ReverseLL {
         
         Node curr = reverse(n0);
         
-        while(curr != null) {
-            System.out.println(curr.data);
-            curr = curr.next;
-        }
+//        while(curr != null) {
+//            System.out.println(curr.data);
+//            curr = curr.next;
+//        }
     }
 
 }
