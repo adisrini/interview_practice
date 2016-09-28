@@ -21,22 +21,14 @@ public class MaximumSumSubarray {
     public static int smart(int[] A) {
         int current_max_so_far = 0;
         int max_so_far = 0;
-        int last_i = -1;
-        List<Integer> subarray = new ArrayList<>();
         for(int i = 0; i < A.length; i++) {
             if(current_max_so_far + A[i] > 0) {
-                if(i - last_i > 1) {
-                    subarray.clear();
-                }
-                last_i = i;
-                subarray.add(A[i]);
                 current_max_so_far = current_max_so_far + A[i];
             } else {
                 current_max_so_far = 0;
             }
             max_so_far = Math.max(current_max_so_far, max_so_far);
         }
-        System.out.println(subarray);
         return max_so_far;
     }
     
