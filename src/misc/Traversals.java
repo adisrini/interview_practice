@@ -1,5 +1,6 @@
 package misc;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -57,6 +58,11 @@ public class Traversals {
         }
     }
     
+    private static void test(int[] a) {
+        a[0] = 10;
+        return;
+    }
+    
     public static void main(String[] args) {
         Node n0 = new Node(0);
         Node n1 = new Node(1);
@@ -75,6 +81,10 @@ public class Traversals {
         
 //        inorder(n3);
         levelOrder(n3);
+        
+        int[] a = new int[]{0, 1, 2};
+        test(a);
+        System.out.println(Arrays.toString(a));
 
     }
 }
