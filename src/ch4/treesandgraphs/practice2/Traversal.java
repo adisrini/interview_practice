@@ -19,16 +19,43 @@ public class Traversal {
     public void preorder_r(BNode<Integer> node) {
         if(node != null) {
             System.out.println(node);
-            inorder_r(node.left);
-            inorder_r(node.right);
+            preorder_r(node.left);
+            preorder_r(node.right);
         }
     }
     
     public void postorder_r(BNode<Integer> node) {
         if(node != null) {
-            inorder_r(node.left);
-            inorder_r(node.right);
+            postorder_r(node.left);
+            postorder_r(node.right);
             System.out.println(node);
+        }
+    }
+    
+    public void postorder_i(BNode<Integer> node) {
+        if(node == null) {
+            return;
+        }
+        Stack<BNode<Integer>> stack1 = new Stack<>();
+        Stack<BNode<Integer>> stack2 = new Stack<>();
+        
+        stack1.push(node);
+        
+        while(!stack1.isEmpty()) {
+            BNode<Integer> top = stack1.pop();
+            stack2.push(top);
+            
+            if(top.left != null) {
+                stack1.push(top.left);
+            }
+            if(top.right != null) {
+                stack1.push(top.right);
+            }
+        }
+        
+        while(!stack2.isEmpty()) {
+            BNode<Integer> top = stack2.pop();
+            System.out.println(top.data);
         }
     }
     
@@ -49,6 +76,29 @@ public class Traversal {
                 BNode<Integer> popped = stack.pop();
                 System.out.println(popped.data);
                 curr = popped.right;
+            }
+        }
+    }
+    
+    public void inorder_i2(BNode<Integer> node) {
+        if(node == null) {
+            return;
+        }
+        Stack<BNode<Integer>> stack = new Stack<>();
+        BNode<Integer> p = node;
+        while(p != null) {
+            stack.push(p);
+            p = p.left;
+        }
+        while(!stack.isEmpty()) {
+            BNode<Integer> top = stack.pop();
+            System.out.println(top.data);
+            if(top.right != null) {
+                top = top.right;
+                while(top != null) {
+                    stack.push(top);
+                    top = top.left;
+                }
             }
         }
     }
@@ -77,6 +127,25 @@ public class Traversal {
             System.out.println();
         }
 
+    }
+    
+    public void preorder_i(BNode<Integer> node) {
+        if(node == null) {
+            return;
+        }
+        Stack<BNode<Integer>> stack = new Stack<>();
+        stack.push(node);
+        
+        while(!stack.isEmpty()) {
+            BNode<Integer> top = stack.pop();
+            System.out.println(top.data);
+            if(top.right != null) {
+                stack.push(top.right);
+            }
+            if(top.left != null) {
+                stack.push(top.left);
+            }
+        }
     }
     
     public void topView(BNode<Integer> node) {
@@ -122,13 +191,19 @@ public class Traversal {
         System.out.println("----------");
         t.preorder_r(n3);
         System.out.println("----------");
+        t.preorder_i(n3);
+        System.out.println("----------");
         t.postorder_r(n3);
+        System.out.println("----------");
+        t.postorder_i(n3);
         System.out.println("----------");
         t.inorder_i(n3);
         System.out.println("----------");
         t.levelOrder(n3);
         System.out.println("----------");
         t.topView(n3);
+        System.out.println("----------");
+        t.inorder_i2(n3);
     }
 
 }

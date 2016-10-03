@@ -19,15 +19,27 @@ public class GraphTraversal {
         }
     }
     
+//    public static void dfs_r(Vertex v) {
+//        if(v == null) {
+//            return;
+//        }
+//        v.visited = true;
+//        System.out.println(v.data);
+//        for(Vertex neighbor : v.neighbors) {
+//            if(!neighbor.visited) {
+//                dfs_r(neighbor);
+//            }
+//        }
+//    }
+    
     public static void dfs_r(Vertex v) {
-        if(v == null) {
-            return;
-        }
-        v.visited = true;
-        System.out.println(v.data);
-        for(Vertex neighbor : v.neighbors) {
-            if(!neighbor.visited) {
-                dfs_r(neighbor);
+        if(v != null) {
+            System.out.println(v.data);
+            v.visited = true;
+            for(Vertex n : v.neighbors) {
+                if(!n.visited) {
+                    dfs_r(n);
+                }
             }
         }
     }
