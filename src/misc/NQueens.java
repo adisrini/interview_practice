@@ -45,7 +45,7 @@ public class NQueens {
     }
     
     public static void main(String[] args) {
-        NQ(4);
+        NQ(10);
         System.out.println(ways);
     }
 

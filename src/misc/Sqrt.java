@@ -32,7 +32,7 @@ public class Sqrt {
     }
     
     public static void main(String[] args) {
-        System.out.println(floorSqrt(3));
+        System.out.println(floorSqrt(85));
     }
 
 }
