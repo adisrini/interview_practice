@@ -60,6 +60,7 @@ public class MergeSort {
     public static void main(String[] args) {
         int[] array = {1, 5, 4, 3, 8, 6, 2, 7};
         System.out.println(Arrays.toString(sort(array)));
+        
     }
 
 }
