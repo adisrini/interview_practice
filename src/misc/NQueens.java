@@ -13,7 +13,7 @@ public class NQueens {
     
     private static int NQ(int size, int row, Integer[] columns) {
         if(row == size) {
-            System.out.println(Arrays.toString(columns));
+//            System.out.println(Arrays.toString(columns));
             ways++;
         }
         for(int col = 0; col < size; col++) {
@@ -45,7 +45,7 @@ public class NQueens {
     }
     
     public static void main(String[] args) {
-        NQ(10);
+        NQ(13);
         System.out.println(ways);
     }
 
