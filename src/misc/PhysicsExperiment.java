@@ -52,9 +52,7 @@ public class PhysicsExperiment {
             Range range = new Range(i + 1, start, end);
             ranges.add(range);
         }
-        
-        Collections.sort(ranges);
-        
+                
         int currentStep = 1;
         
         Range furthestRange = null;
