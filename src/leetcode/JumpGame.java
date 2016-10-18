@@ -23,4 +23,5 @@ public class JumpGame {
         return positions[0].equals(Position.GOOD);
     }
 
+    
 }
