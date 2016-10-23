@@ -65,7 +65,6 @@ public class Traversal {
         }
         
         Stack<BNode<Integer>> stack = new Stack<>();
-        
         BNode<Integer> curr = node;
         
         while(!stack.isEmpty() || curr != null) {
@@ -73,9 +72,9 @@ public class Traversal {
                 stack.push(curr);
                 curr = curr.left;
             } else {
-                BNode<Integer> popped = stack.pop();
-                System.out.println(popped.data);
-                curr = popped.right;
+                BNode<Integer> top = stack.pop();
+                System.out.println(top.data);
+                curr = top.right;
             }
         }
     }

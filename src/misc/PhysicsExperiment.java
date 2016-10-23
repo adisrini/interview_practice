@@ -2,8 +2,10 @@ package misc;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 public class PhysicsExperiment {
     
@@ -32,7 +34,7 @@ public class PhysicsExperiment {
     
     public static int schedule(int n, List<List<Integer>> students) {
         int[] a = new int[n];
-        
+                
         List<Range> ranges = new ArrayList<>();
         
         for(int i = 0; i < students.size(); i++) {
@@ -57,7 +59,7 @@ public class PhysicsExperiment {
         
         Range furthestRange = null;
         int rangeDist = Integer.MIN_VALUE;
-        
+
         while(currentStep <= n) {
             for(Range range : ranges) {
                 if(inRange(range, currentStep) && (range.end > rangeDist)) {
