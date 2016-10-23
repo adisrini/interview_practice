@@ -6,12 +6,19 @@ import java.util.Map;
 public class LRUCache {
     
     class Node {
+        int key;
         int data;
         Node prev;
         Node next;
         
-        Node(int data) {
+        Node(int key, int data) {
+            this.key = key;
             this.data = data;
+        }
+        
+        @Override
+        public String toString() {
+            return String.format("(%d: %d)", key, data);
         }
     }
     
@@ -26,13 +33,13 @@ public class LRUCache {
         }
         
         int add(Node node) {
-            int value = -1;
+            int key = -1;
             if(head == null && tail == null) {
                 head = node;
                 tail = head;
             } else {
                 if(size == capacity) {
-                    value = tail.data;
+                    key = tail.key;
                     tail = tail.prev;
                     size--;
                 }
@@ -41,15 +48,31 @@ public class LRUCache {
                 head = node;
             }
             size++;
-            return value;
+            return key;
         }
     
         void remove(Node node) {
             Node prev = node.prev;
             Node next = node.next;
-            prev.next = next;
-            next.prev = prev;
+            if(prev != null) {
+                prev.next = next;
+            }
+            if(next != null) {
+                next.prev = prev;
+            }
             size--;
+        }
+        
+        @Override
+        public String toString() {
+            StringBuilder builder = new StringBuilder();
+            Node curr = head;
+            while(curr != null) {
+                builder.append(curr.toString());
+                builder.append("->");
+                curr = curr.next;
+            }
+            return builder.toString();
         }
     }
     
@@ -63,17 +86,21 @@ public class LRUCache {
     
     public int get(int key) {
         if(cache_ht.containsKey(key)) {
-            return cache_ht.get(key).data;
+            Node node = cache_ht.get(key);
+            if(cache_q.size > 1) {
+                cache_q.remove(node);
+                cache_q.add(node);
+            }
+            return node.data;
         }
         return -1;
     }
     
     public void set(int key, int value) {
-        if(!cache_ht.containsKey(key)) {
-            Node insert = new Node(value);
+        if(!cache_ht.containsKey(key) || cache_ht.get(key).data != value) {
+            Node insert = new Node(key, value);
             cache_ht.put(key, insert);
             int deleted = cache_q.add(insert);
-            System.out.println(key + " " + value + " " + deleted);
             if(deleted != -1) {
                 cache_ht.remove(deleted);
             }
@@ -81,7 +108,16 @@ public class LRUCache {
     }
     
     public static void main(String[] args) {
-        LRUCache cache = new LRUCache(1);
+        LRUCache cache = new LRUCache(2);
         cache.set(2, 1);
+//        System.out.println(cache.cache_q);
+        cache.set(2, 2);
+//        System.out.println(cache.cache_q);
+        System.out.println(cache.get(2));
+        cache.set(1, 1);
+//        System.out.println(cache.cache_q);
+        cache.set(4, 1);
+//        System.out.println(cache.cache_q);
+        System.out.println(cache.get(2));
     }
 }
