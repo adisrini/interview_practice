@@ -1,36 +1,36 @@
 package misc;
 
+import java.util.Arrays;
+
 public class Permutations {
     
-    public static void perm(Object[] A) {
-        perm(A, 0);
+    // Permutations
+
+    public static void permute(String s) {
+        permute(s.toCharArray(), 0);
     }
-    
-    private static void perm(Object[] A, int index) {
-        if(index == A.length) {
-            for(Object obj : A) {
-                System.out.print(obj);
-            }
-            System.out.println();
-            return;
+
+    private static void permute(char[] s, int index) {
+        if(index == s.length) {
+            System.out.println(Arrays.toString(s));
         }
-        for(int i = index; i < A.length; i++) {
-            A = swap(A, i, index);
-            perm(A, index + 1);
-            A = swap(A, i, index);
-        }
+        
+    for(int i = index; i < s.length; i++) {
+        swap(s, i, index);
+        permute(s, index + 1);
+        swap(s, i, index);
+    }   
+
     }
-    
-    private static Object[] swap(Object[] A, int i, int j) {
-        Object t = A[i];
-        A[i] = A[j];
-        A[j] = t;
-        return A;
+
+    private static void swap(char[] s, int i, int j) {
+        char temp = s[i];
+        s[i] = s[j];
+        s[j] = temp;
     }
     
     public static void main(String[] args) {
-        Character[] string = new Character[]{'a', 'b', 'c'};
-        perm(string);
+        permute("abc");
     }
 
 }
