@@ -9,11 +9,30 @@ public class ReverseLL {
             return head;
         }
         Node next = head.next;
-        head.next = null;
         Node rest = reverse(next);
+        head.next = null;
         next.next = head;
         return rest;
     }
+    
+    public static Node reverse_i(Node head) {
+        if(head == null || head.next == null) {
+            return head;
+        }
+
+        Node curr = head;
+        Node prev = null;
+
+        while(curr != null) {
+            Node next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        return prev;
+    }
+
     
     public static void main(String[] args) {
         Node n0 = new Node(0);
