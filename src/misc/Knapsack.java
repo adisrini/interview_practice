@@ -1,7 +1,5 @@
 package misc;
 
-import java.util.Arrays;
-
 public class Knapsack {
     
     public static int[][] knapsack(int[] v, int[] w, int n, int W) {

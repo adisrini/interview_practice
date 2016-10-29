@@ -1,7 +1,5 @@
 package ch4.treesandgraphs.practice2;
 
-import ch4.treesandgraphs.implementations.BNode;
-
 public class SuccessorBetter {
     
     static class Node {

@@ -1,7 +1,5 @@
 package misc;
 
-import java.util.Arrays;
-
 public class NQueens {
     
     private static int ways;

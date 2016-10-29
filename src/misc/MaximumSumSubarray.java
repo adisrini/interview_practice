@@ -1,8 +1,5 @@
 package misc;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MaximumSumSubarray {
     
     public static int dynamic(int[] A) {

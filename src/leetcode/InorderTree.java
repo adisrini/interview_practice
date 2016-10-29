@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-import ch4.treesandgraphs.implementations.TreeNode;
-
 public class InorderTree {
     
     static class Node {
